@@ -56,6 +56,10 @@ apply_fuzzel() {
   # Copy template
   mkdir -p "$CACHE_DIR"/user/generated/fuzzel
   cp "scripts/templates/fuzzel/fuzzel.ini" "$CACHE_DIR"/user/generated/fuzzel/fuzzel.ini
+
+  # Make sure cache permission
+  chmod 644 "$CACHE_DIR"/user/generated/fuzzel/fuzzel.ini
+  
   # Apply colors
   for i in "${!colorlist[@]}"; do
     sed -i "s/{{ ${colorlist[$i]} }}/${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/fuzzel/fuzzel.ini
@@ -73,6 +77,10 @@ apply_term() {
   # Copy template
   mkdir -p "$CACHE_DIR"/user/generated/terminal
   cp "scripts/templates/terminal/sequences.txt" "$CACHE_DIR"/user/generated/terminal/sequences.txt
+
+  # Make sure cache permission
+  chmod 644 "$CACHE_DIR"/user/generated/terminal/sequences.txt
+
   # Apply colors
   for i in "${!colorlist[@]}"; do
     sed -i "s/${colorlist[$i]} #/${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/terminal/sequences.txt
@@ -96,6 +104,10 @@ apply_hyprland() {
   # Copy template
   mkdir -p "$CACHE_DIR"/user/generated/hypr/hyprland
   cp "scripts/templates/hypr/hyprland/colors.conf" "$CACHE_DIR"/user/generated/hypr/hyprland/colors.conf
+
+  # Make sure cache permission
+  chmod 644 "$CACHE_DIR"/user/generated/hypr/hyprland/colors.conf
+
   # Apply colors
   for i in "${!colorlist[@]}"; do
     sed -i "s/{{ ${colorlist[$i]} }}/${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/hypr/hyprland/colors.conf
@@ -113,6 +125,10 @@ apply_hyprlock() {
   # Copy template
   mkdir -p "$CACHE_DIR"/user/generated/hypr/
   cp "scripts/templates/hypr/hyprlock.conf" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
+
+  # Make sure cache permission
+  chmod 644 "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
+
   # Apply colors
   # sed -i "s/{{ SWWW_WALL }}/${wallpath_png}/g" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
   for i in "${!colorlist[@]}"; do
@@ -132,6 +148,11 @@ apply_ags_sourceview() {
   mkdir -p "$CACHE_DIR"/user/generated/ags
   cp "scripts/templates/ags/sourceviewtheme.xml" "$CACHE_DIR"/user/generated/ags/sourceviewtheme.xml
   cp "scripts/templates/ags/sourceviewtheme-light.xml" "$CACHE_DIR"/user/generated/ags/sourceviewtheme-light.xml
+
+  # Make sure cache permission
+  chmod 644 "$CACHE_DIR"/user/generated/ags/sourceviewtheme.xml
+  chmod 644 "$CACHE_DIR"/user/generated/ags/sourceviewtheme-light.xml
+
   # Apply colors
   for i in "${!colorlist[@]}"; do
     sed -i "s/{{ ${colorlist[$i]} }}/#${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/ags/sourceviewtheme.xml
@@ -160,6 +181,10 @@ apply_gtk() {
   # Copy template
   mkdir -p "$CACHE_DIR"/user/generated/gtk/
   cp "scripts/templates/gtk/gtk-colors.css" "$CACHE_DIR"/user/generated/gtk/gtk-colors.css
+  
+  # Make sure cache permission
+  chmod 644 "$CACHE_DIR"/user/generated/gtk/gtk-colors.css
+
   # Apply colors
   for i in "${!colorlist[@]}"; do
     sed -i "s/{{ ${colorlist[$i]} }}/#${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/gtk/gtk-colors.css
